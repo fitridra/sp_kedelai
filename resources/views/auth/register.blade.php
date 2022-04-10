@@ -61,10 +61,10 @@
                                 </div>
                                 <input type="hidden" name="role" value="1">
                                 <div class="mt-3">
-                                    <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit">SIGN UP</button>
+                                    <button class="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn" type="submit">SIGN UP</button>
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
-                                    Sudah Punya Akun? <a href="{{route('login')}}" class="text-primary">Login</a>
+                                    Sudah Punya Akun? <a href="{{route('login')}}" class="text-success">Login</a>
                                 </div>
                             </form>
                         </div>

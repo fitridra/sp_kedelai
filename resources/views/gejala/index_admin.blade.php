@@ -48,7 +48,7 @@
                                         <tr>
                                             <td class="text-center">{{$no++}}</td>
                                             <td>G{{$gejala->id_gejala}}</td>
-                                            <td>{{$gejala->nm_gejala}}</td>
+                                            <td style="white-space: normal">{{$gejala->nm_gejala}}</td>
                                             <td>{{$gejala->nilai_prior}}</td>
                                             <td>{{$gejala->nilai_cpt}}</td>
                                             <td>{{$gejala->nilai_posterior}}</td>
@@ -77,6 +77,7 @@
                 </div>
             </div>
         </div>
+        
 
         <!-- Modal -->
         <div class="modal fade" id="tambah_gejala" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

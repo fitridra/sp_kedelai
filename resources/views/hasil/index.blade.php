@@ -52,7 +52,7 @@
                                     <a href="#"><img src="{{ asset('storage/'.$b->foto) }}" alt="Hama"></a>
                                     <h5>{{$b->nm_hama}}</h5>
                                 </td>
-                                <td class="price"><span>{{$prob1a}}%</span></td>
+                                <td class="price"><span>{{$prob1a*100}}%</span></td>
                                 @elseif(strlen($hasil->kd_hama) == 11)
                                 @php
                                 $e = substr($hasil->kd_hama, -9, 2);
