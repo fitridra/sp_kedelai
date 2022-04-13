@@ -137,7 +137,7 @@
                         <div class="tipWrap">
                             <span class="tip"></span>
                         </div>
-                        <span class="fill" data-percentage="{{$hasil->proabilitas*100}}"></span>
+                        <span class="fill" data-percentage="{{$hasil->probabilitas*100}}"></span>
                     </div>
                 </div>
             </div>

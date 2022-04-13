@@ -15,7 +15,7 @@ class GejalaController extends Controller
 
 	public function index_admin()
 	{
-		$data_gejala = Gejala::all();
+		$data_gejala = Gejala::paginate(5);
 		$id_gejala = $data_gejala->count('id_gejala');
 		return view('gejala.index_admin', compact('data_gejala', 'id_gejala'));
 	}

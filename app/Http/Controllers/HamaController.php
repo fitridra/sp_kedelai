@@ -23,7 +23,7 @@ class HamaController extends Controller
 
 	public function index_admin()
 	{
-		$data_hama = Hama::all();
+		$data_hama = Hama::paginate(5);
 		$id_hama = $data_hama->count('kd_hama');
 		return view('hama.index_admin', compact('data_hama', 'id_hama'));
 	}

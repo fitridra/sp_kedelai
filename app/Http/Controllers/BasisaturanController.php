@@ -12,7 +12,7 @@ class BasisaturanController extends Controller
 {
 	public function index_admin()
 	{
-		$data_basisaturan = Basisaturan::all();
+		$data_basisaturan = Basisaturan::paginate(5);
 		$data_hama = Hama::all();
 		$data_gejala = Gejala::all();
 		return view('basisaturan.index_admin', compact('data_basisaturan', 'data_hama', 'data_gejala'));

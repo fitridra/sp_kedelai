@@ -13,7 +13,7 @@ class HasilController extends Controller
 	public function index($id_user)
 	{
 		$riwayat1 = Hasil::where('id', $id_user)->get()->pluck('kd_hama');
-		$riwayat = Hasil::where('id', $id_user)->get();
+		$riwayat = Hasil::where('id', $id_user)->paginate(5);
 		$id_user = Auth::user()->id;
 
 		return view('hasil.index', compact('riwayat','riwayat1', 'id_user'));
@@ -27,7 +27,7 @@ class HasilController extends Controller
 
 	public function index_admin()
 	{
-		$data_hasil = Hasil::all();
+		$data_hasil = Hasil::paginate(5);
 		return view('hasil.index_admin', compact('data_hasil'));
 	}
 

@@ -76,7 +76,14 @@
                                         </tr>
                                         @endforeach
                                     </tbody>
-                                </table>
+                                </table><br>
+                                <div class="pagging text-center">
+                                    <nav>
+                                        <ul class="pagination justify-content-center">
+                                            {{ $data_hasil->links() }}
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -50,7 +50,7 @@ class UserController extends Controller
 
 	public function index_admin()
 	{
-		$data_user = User::all();
+		$data_user = User::paginate(5);
 		return view('user.index_admin', compact('data_user'));
 	}
 

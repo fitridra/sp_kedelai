@@ -1,6 +1,14 @@
 @extends('layout.master')
 
 @section('content')
+<style>
+    .page-item.active .page-link {
+
+        background-color: #70c745;
+        border-color: #70c745;
+        color: #fff;
+    }
+</style>
 <!-- ##### Breadcrumb Area Start ##### -->
 <div class="breadcrumb-area">
     <!-- Top Breadcrumb Area -->
@@ -79,13 +87,13 @@
                                 <<td class="cart_product_img">
                                     <a href="#"><img src="{{ asset('storage/'.$hasil->hama->foto) }}" alt="Hama"></a>
                                     <h5>{{$hasil->hama->nm_hama}}</h5>
-                                </td>
-                                <td class="price"><span>{{$hasil->probabilitas*100}}%</span></td>
-                                @endif
+                                    </td>
+                                    <td class="price"><span>{{$hasil->probabilitas*100}}%</span></td>
+                                    @endif
 
-                                <td class="price"><span>{{$hasil->waktu}}</span></td>
-                                <td></td>
-                                <td class="action"><a href="{{route('detail_hasil',$hasil->id_hasil)}}"><i class="fa fa-eye" style="color: green;"></i></a></td>
+                                    <td class="price"><span>{{$hasil->waktu}}</span></td>
+                                    <td></td>
+                                    <td class="action"><a href="{{route('detail_hasil',$hasil->id_hasil)}}"><i class="fa fa-eye" style="color: green;"></i></a></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -95,9 +103,7 @@
                         <div class="col-12">
                             <nav aria-label="Page navigation">
                                 <ul class="pagination">
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
+                                    {{ $riwayat->links() }}
                                 </ul>
                             </nav>
                         </div>

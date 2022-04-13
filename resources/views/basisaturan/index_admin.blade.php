@@ -49,7 +49,14 @@
                                         </tr>
                                         @endforeach
                                     </tbody>
-                                </table>
+                                </table><br>
+                                <div class="pagging text-center">
+                                    <nav>
+                                        <ul class="pagination justify-content-center">
+                                            {{ $data_basisaturan->links() }}
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
                     </div>

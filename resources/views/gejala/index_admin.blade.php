@@ -70,14 +70,21 @@
                                         </tr>
                                         @endforeach
                                     </tbody>
-                                </table>
+                                </table><br>
+                                <div class="pagging text-center">
+                                    <nav>
+                                        <ul class="pagination justify-content-center">
+                                            {{ $data_gejala->links() }}
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
 
         <!-- Modal -->
         <div class="modal fade" id="tambah_gejala" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
