@@ -22,16 +22,16 @@ class GejalaController extends Controller
 
 	public function tambah()
 	{
-		$nilai_prior = request()->nilai_prior;
-		$nilai_cpt = request()->nilai_cpt;
+		$nilai_prior = request()->nilai_prior; //GaHa
+		$nilai_cpt = request()->nilai_cpt; //GaHt
 
-		$present = $nilai_prior;
-		$absent = 1 - $nilai_prior;
+		$priorAda = $nilai_prior;
+		$priorTidakada = 1 - $nilai_prior;
 
-		$p_jpd = $nilai_prior * $present;
-		$a_jpd = $nilai_cpt * $absent;
+		$JPD_GaHa = $nilai_prior * $priorAda;
+		$JPD_GaHt = $nilai_cpt * $priorTidakada;
 
-		$nilai_posterior = $p_jpd / ($p_jpd + $a_jpd);
+		$nilai_posterior = $JPD_GaHa / ($JPD_GaHa + $JPD_GaHt);
 
 		if (request()->foto != null) {
 			$input_s = request()->file('foto')->store('gejala');
