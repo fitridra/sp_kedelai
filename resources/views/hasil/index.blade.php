@@ -83,6 +83,7 @@
                                     <h5>{{$j->nm_hama}}</h5>
                                 </td>
                                 <td class="price"><span>{{$prob3a*100}}%</span></td>
+                                @elseif(strlen($hasil->kd_hama) == 7)
                                 @php
                                 $k = substr($hasil->kd_hama, -5, 3);
                                 $l = App\Models\Hama::where('kd_hama',$k)->first();
