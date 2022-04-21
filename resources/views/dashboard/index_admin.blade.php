@@ -62,6 +62,17 @@
                             </div>
                         </div>
                     </div>
+                    @if(auth()->user()->role == 3)
+                    <div class="col-md-6 stretch-card transparent">
+                        <div class="card card-light-danger">
+                            <div class="card-body">
+                                <p class="mb-4">Data Basis Aturan</p>
+                                <p class="fs-30 mb-2">{{$jba}}</p>
+                                <p>(Jumlah) Basis Aturan</p>
+                            </div>
+                        </div>
+                    </div>
+                    @else
                     <div class="col-md-6 stretch-card transparent">
                         <div class="card card-light-danger">
                             <div class="card-body">
@@ -71,6 +82,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

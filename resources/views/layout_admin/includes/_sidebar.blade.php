@@ -31,11 +31,15 @@
                 <span class="menu-title">Data Hasil</span>
             </a>
         </li>
+        @if(auth()->user()->role == 3)
+
+        @else
         <li class="nav-item">
             <a class="nav-link" href="/user">
                 <i class="icon-head menu-icon"></i>
                 <span class="menu-title">Data Pengguna</span>
             </a>
         </li>
+        @endif
     </ul>
 </nav>

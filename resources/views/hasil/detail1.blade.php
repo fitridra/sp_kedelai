@@ -83,7 +83,7 @@
             $f = App\Models\Hama::where('kd_hama',$e)->first();
             $g = substr($hasil->kd_hama, -4, 2);
             $h = App\Models\Hama::where('kd_hama',$g)->first();
-            $prob2a = substr($hasil->probabilitas, -13, 4);
+            $prob2a = substr($hasil->probabilitas, -13, 4); 
             $prob2b = substr($hasil->probabilitas, -6, 4);
             @endphp
             <div class="col-lg">
@@ -128,6 +128,24 @@
                     </div>
                 </div>
             </div>
+            @elseif(strlen($hasil->kd_hama) == 7)
+            @php
+            $k = substr($hasil->kd_hama, -5, 3);
+            $l = App\Models\Hama::where('kd_hama',$k)->first();
+            $prob4a = substr($hasil->probabilitas, -6, 4);
+            @endphp
+            <div class="col-lg">
+                <!-- Single Progress Bar -->
+                <div class="single_progress_bar">
+                    <p>{{$l->nm_hama}}</p>
+                    <div id="bar1" class="barfiller">
+                        <div class="tipWrap">
+                            <span class="tip"></span>
+                        </div>
+                        <span class="fill" data-percentage="{{$prob4a*100}}"></span>
+                    </div>
+                </div>
+            </div>
             @else
             <div class="col-lg">
                 <!-- Single Progress Bar -->
@@ -169,6 +187,10 @@
                         @elseif(strlen($hasil->kd_hama) == 6)
                         <li class="nav-item">
                             <a href="#description" class="nav-link active" data-toggle="tab" role="tab">{{$j->nm_hama}}</a>
+                        </li>
+                        @elseif(strlen($hasil->kd_hama) == 7)
+                        <li class="nav-item">
+                            <a href="#description" class="nav-link active" data-toggle="tab" role="tab">{{$l->nm_hama}}</a>
                         </li>
                         @else
                         <li class="nav-item">
@@ -390,6 +412,43 @@
                                                 <p><span>Tanggal Konsultasi:</span> <span>{{$hasil->waktu}}</span></p>
                                                 <p><span>Kode Hama:</span> <span>{{$j->kd_hama}}</span></p>
                                                 <p><span>Nama Hama:</span> <span>{{$j->nm_hama}}</span></p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @elseif(strlen($hasil->kd_hama) == 7)
+                        <div role="tabpanel" class="tab-pane fade show active" id="description">
+                            <div class="description_area">
+                                <div class="row justify-content-between">
+
+                                    <div class="col-12 col-md-6 col-lg-5">
+                                        <div class="single_product_thumb">
+                                            <div id="product_details_slider" class="carousel slide" data-ride="carousel">
+                                                <div class="carousel-inner">
+                                                    <div class="carousel-item active">
+                                                        <a class="product-img" href="{{ asset('storage/'.$l->foto) }}" title="Product Image">
+                                                            <img class="d-block w-100" src="{{ asset('storage/'.$l->foto) }}" alt="1">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-6">
+                                        <div class="single_product_desc">
+                                            <h4 class="title">{{$l->nm_hama}}</h4>
+                                            <div class="short_overview">
+                                                <p>{{$l->solusi}}</p>
+                                            </div>
+
+                                            <div class="products--meta">
+                                                <p><span>Tanggal Konsultasi:</span> <span>{{$hasil->waktu}}</span></p>
+                                                <p><span>Kode Hama:</span> <span>{{$l->kd_hama}}</span></p>
+                                                <p><span>Nama Hama:</span> <span>{{$l->nm_hama}}</span></p>
                                             </div>
 
                                         </div>

@@ -62,6 +62,14 @@
                                             @endphp
                                             <td>{{$j->nm_hama}}</td>
                                             <td>{{$prob3a*100}}%</td>
+                                            @elseif(strlen($hasil->kd_hama) == 7)
+                                            @php
+                                            $k = substr($hasil->kd_hama, -5, 3);
+                                            $l = App\Models\Hama::where('kd_hama',$k)->first();
+                                            $prob4a = substr($hasil->probabilitas, -6, 4);
+                                            @endphp
+                                            <td>{{$l->nm_hama}}</td>
+                                            <td>{{$prob4a*100}}%</td>
                                             @else
                                             <td>{{$hasil->hama->nm_hama}}</td>
                                             <td>{{$hasil->probabilitas*100}}%</td>

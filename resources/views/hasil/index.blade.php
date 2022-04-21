@@ -83,6 +83,16 @@
                                     <h5>{{$j->nm_hama}}</h5>
                                 </td>
                                 <td class="price"><span>{{$prob3a*100}}%</span></td>
+                                @php
+                                $k = substr($hasil->kd_hama, -5, 3);
+                                $l = App\Models\Hama::where('kd_hama',$k)->first();
+                                $prob4a = substr($hasil->probabilitas, -6, 4);
+                                @endphp
+                                <td class="cart_product_img">
+                                    <a href="#"><img src="{{ asset('storage/'.$l->foto) }}" alt="Hama"></a>
+                                    <h5>{{$l->nm_hama}}</h5>
+                                </td>
+                                <td class="price"><span>{{$prob4a*100}}%</span></td>
                                 @else
                                 <<td class="cart_product_img">
                                     <a href="#"><img src="{{ asset('storage/'.$hasil->hama->foto) }}" alt="Hama"></a>

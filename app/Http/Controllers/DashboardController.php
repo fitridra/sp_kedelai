@@ -15,9 +15,6 @@ class DashboardController extends Controller
   {
     $hasil = Hasil::where('id', auth()->user()->id)->latest('id_hasil')->take(4)->get();
     $data_hama = Hama::take(3)->get();
-    // $jumlah = Hasil::where('id', auth()->user()->id)->count('id_hasil');
-    // $jumlah2 = Hasil::where('id', auth()->user()->id)->select('kd_hama')->get()->unique('kd_hama');
-    // $total = $jumlah2->count('kd_hama');
 
     return view('dashboard.index',compact('hasil','data_hama'));
   }
