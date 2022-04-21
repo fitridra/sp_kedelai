@@ -20,7 +20,10 @@ Route::post('/register', [App\Http\Controllers\RegisterController::class, 'store
 Route::get('/login', [App\Http\Controllers\LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [App\Http\Controllers\LoginController::class, 'authenticate']);
 Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('logout')->middleware('auth');
-// Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware('guest');
+Route::get('/resetpw', [App\Http\Controllers\LoginController::class, 'resetpw'])->name('resetpw')->middleware('guest');
+Route::post('/resetpw', [App\Http\Controllers\LoginController::class, 'sendlink']);
+Route::get('/resetpw/{token}', [App\Http\Controllers\LoginController::class, 'formpw'])->name('formpw')->middleware('guest');
+Route::post('/reset_pw', [App\Http\Controllers\LoginController::class, 'reset_password'])->name('reset_pw')->middleware('guest');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::group(['middleware' => ['pakar']], function(){

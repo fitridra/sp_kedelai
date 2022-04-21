@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Login Konsultasi Hama Kedelai</title>
+    <title>Konsultasi Hama Kedelai</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{asset('assets/admin/vendors/feather/feather.css')}}">
     <link rel="stylesheet" href="{{asset('assets/admin/vendors/ti-icons/css/themify-icons.css')}}">
@@ -27,45 +27,38 @@
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                             <div class="brand-logo">
-                                <h2 class="text-center">Konsultasi Hama Kedelai</h2>
+                                <h2 class="text-center">Lupa Kata Sandi</h2>
                             </div>
-                            <h6 class="font-weight-light text-center">Masuk untuk melakukan konsultasi.</h6>
-                            @if(session('success'))
-                            <div class="alert alert-success" role="alert">
-                                {{session('success')}}
-                            </div>
-                            @elseif(session('loginError'))
-                            <div class="alert alert-danger" role="alert">
-                                {{session('loginError')}}
-                            </div>
-                            @endif
+                            <center>
+                                <h6 class="font-weight-light">Silahkan masukkan kata sandi baru anda.</h6>
 
-                            <form class="pt-3" action="/login" method="post">
+                                @if(session('failed'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{session('failed')}}
+                                </div>
+                                @endif
+                            </center>
+                            <form class="pt-3" action="{{route('reset_pw')}}" method="post">
                                 @csrf
+                                <input type="hidden" name="token" value="{{$token}}">
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control form-control-lg @error('email') is-invalid @enderror" placeholder="Email" value="{{old('email')}}" required>
+                                    <input type="email" name="email" class="form-control form-control-lg @error('email') is-invalid @enderror" id="exampleInputEmail1" value="{{old('email')}}" placeholder="Email" required>
                                     @error('email')
-                                    <div class="invalid-feedback" role="alert">
+                                    <div class="invalid-feedback">
                                         {{$message}}
                                     </div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="password" class="form-control form-control-lg @error('password') is-invalid @enderror" placeholder="Password" required>
+                                    <input type="password" name="password" class="form-control form-control-lg @error('password') is-invalid @enderror" id="exampleInputPassword1" placeholder="Password" required>
                                     @error('password')
-                                    <div class="invalid-feedback" role="alert">
+                                    <div class="invalid-feedback">
                                         {{$message}}
                                     </div>
                                     @enderror
                                 </div>
                                 <div class="mt-3">
-                                    <button class="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn" type="submit">MASUK</button>
-                                </div>
-                                <div class="my-2 d-flex justify-content-between align-items-center">
-                                    <a href="{{route('resetpw')}}" class="auth-link text-black">Lupa Kata Sandi</a>
-                                </div>
-                                <div class="text-center mt-4 font-weight-light">
-                                    Belum Punya Akun? <a href="{{route('register')}}" class="text-success">Buat Akun</a>
+                                    <button class="btn btn-block btn-info btn-lg font-weight-medium auth-form-btn" type="submit">Reset Password</button>
                                 </div>
                             </form>
                         </div>
