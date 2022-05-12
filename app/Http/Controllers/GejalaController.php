@@ -13,9 +13,14 @@ use Carbon\Carbon;
 class GejalaController extends Controller
 {
 
-	public function index_admin()
+	public function index_admin(Request $request)
 	{
-		$data_gejala = Gejala::paginate(5);
+		$data_gejala = Gejala::when($request->cari, function ($query) use ($request) {
+            $query->where('nm_gejala', 'LIKE', "%{$request->cari}%");
+        })->paginate(5);
+
+        $data_gejala->appends($request->only('cari'));
+
 		$id_gejala = $data_gejala->count('id_gejala');
 		return view('gejala.index_admin', compact('data_gejala', 'id_gejala'));
 	}
