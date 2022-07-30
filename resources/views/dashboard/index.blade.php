@@ -54,8 +54,8 @@
     <div class="container">
         <div class="row"> -->
 
-            <!-- Single Cool Facts Area -->
-            <!-- <div class="col-12 col-sm-6 col-md-3">
+<!-- Single Cool Facts Area -->
+<!-- <div class="col-12 col-sm-6 col-md-3">
                 <div class="single-cool-fact d-flex align-items-center justify-content-center mb-100">
                     <div class="cf-icon">
                         <img src="./assets/user/img/core-img/cf1.png" alt="">
@@ -67,8 +67,8 @@
                 </div>
             </div> -->
 
-            <!-- Single Cool Facts Area -->
-            <!-- <div class="col-12 col-sm-6 col-md-3">
+<!-- Single Cool Facts Area -->
+<!-- <div class="col-12 col-sm-6 col-md-3">
                 <div class="single-cool-fact d-flex align-items-center justify-content-center mb-100">
                     <div class="cf-icon">
                         <img src="./assets/user/img/core-img/cf2.png" alt="">
@@ -80,8 +80,8 @@
                 </div>
             </div> -->
 
-            <!-- Single Cool Facts Area -->
-            <!-- <div class="col-12 col-sm-6 col-md-3">
+<!-- Single Cool Facts Area -->
+<!-- <div class="col-12 col-sm-6 col-md-3">
                 <div class="single-cool-fact d-flex align-items-center justify-content-center mb-100">
                     <div class="cf-icon">
                         <img src="./assets/user/img/core-img/cf3.png" alt="">
@@ -93,8 +93,8 @@
                 </div>
             </div> -->
 
-            <!-- Single Cool Facts Area -->
-            <!-- <div class="col-12 col-sm-6 col-md-3">
+<!-- Single Cool Facts Area -->
+<!-- <div class="col-12 col-sm-6 col-md-3">
                 <div class="single-cool-fact d-flex align-items-center justify-content-center mb-100">
                     <div class="cf-icon">
                         <img src="./assets/user/img/core-img/cf4.png" alt="">
@@ -195,6 +195,30 @@
                             <p>{{$j->nm_hama}}</p>
                         </a>
                         <h6>{{$prob3a*100}}%</h6>
+                    </div>
+                </div>
+            </div>
+            @elseif(strlen($hsl->kd_hama) == 7)
+            @php
+            $k = substr($hsl->kd_hama, -5, 3);
+            $l = App\Models\Hama::where('kd_hama',$k)->first();
+            $prob4a = substr($hsl->probabilitas, -6, 4);
+            @endphp
+            <!-- Single Product Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="100ms">
+                    <!-- Product Image -->
+                    <div class="product-img">
+                        <a class="product-img" href="{{route('detail_hasil',$hsl->id_hasil)}}">
+                            <img src="{{ asset('storage/'.$l->foto) }}" alt="1">
+                        </a>
+                    </div>
+                    <!-- Product Info -->
+                    <div class="product-info mt-15 text-center">
+                        <a href="{{route('detail_hasil',$hsl->id_hasil)}}">
+                            <p>{{$l->nm_hama}}</p>
+                        </a>
+                        <h6>{{$prob4a*100}}%</h6>
                     </div>
                 </div>
             </div>

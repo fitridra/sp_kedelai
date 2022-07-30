@@ -135,17 +135,35 @@
                                 <a href="{{route('detail_hama',$j->kd_hama)}}" class="post-date">Lihat Hama</a> <!-- kode hama -->
                             </div>
                         </div>
+                        @elseif(strlen($Hama->kd_hama) == 7)
+                        @php
+                        $k = substr($Hama->kd_hama, -5, 3);
+                        $l = App\Models\Hama::where('kd_hama',$k)->first();
+                        $prob4a = substr($Hama->probabilitas, -6, 4);
+                        @endphp
+                        <!-- Single Latest Posts -->
+                        <div class="single-latest-post d-flex align-items-center">
+                            <div class="post-thumb">
+                                <img src="{{ asset('storage/'.$l->foto) }}" alt="">
+                            </div>
+                            <div class="post-content">
+                                <a href="{{route('detail_hama',$l->kd_hama)}}" class="post-title">
+                                    <h6>{{$l->nm_hama}}</h6>
+                                </a>
+                                <a href="{{route('detail_hama',$l->kd_hama)}}" class="post-date">Lihat Hama</a> <!-- kode hama -->
+                            </div>
+                        </div>
                         @else
                         <!-- Single Latest Posts -->
                         <div class="single-latest-post d-flex align-items-center">
                             <div class="post-thumb">
-                                <img src="{{ asset('storage/'.$Hama->hama->foto) }}" alt="">
+                                <img src="{{ asset('storage/'.$Hama->foto) }}" alt="">
                             </div>
                             <div class="post-content">
-                                <a href="{{route('detail_hama',$Hama->hama->kd_hama)}}" class="post-title">
-                                    <h6>{{$Hama->hama->nm_hama}}</h6>
+                                <a href="{{route('detail_hama',$Hama->kd_hama)}}" class="post-title">
+                                    <h6>{{$Hama->nm_hama}}</h6>
                                 </a>
-                                <a href="{{route('detail_hama',$Hama->hama->kd_hama)}}" class="post-date">Lihat Hama</a> <!-- kode hama -->
+                                <a href="{{route('detail_hama',$Hama->kd_hama)}}" class="post-date">Lihat Hama</a> <!-- kode hama -->
                             </div>
                         </div>
                         @endif

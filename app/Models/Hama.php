@@ -9,7 +9,7 @@ class Hama extends Model
 {
     use HasFactory;
     protected $table = "tb_hama";
-    protected $fillable = ['kd_hama','nm_hama','deskripsi','solusi','foto'];
+    protected $fillable = ['kd_hama','nm_hama','deskripsi','solusi','foto','foto2'];
     protected $primarykey = "kd_hama";
     public $timestamps = false;
 

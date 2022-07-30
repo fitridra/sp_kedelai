@@ -44,7 +44,7 @@
             <div class="col-lg">
                 <!-- Single Progress Bar -->
                 <div class="single_progress_bar">
-                    <p>{{$b->nm_hama}}</p>
+                    <p class="mb-4">Hama {{$b->nm_hama}}</p>
                     <div id="bar1" class="barfiller">
                         <div class="tipWrap">
                             <span class="tip"></span>
@@ -56,7 +56,7 @@
             <div class="col-lg">
                 <!-- Single Progress Bar -->
                 <div class="single_progress_bar">
-                    <p>{{$y->nm_hama}}</p>
+                    <p class="mb-4">Hama {{$y->nm_hama}}</p>
                     <div id="bar2" class="barfiller">
                         <div class="tipWrap">
                             <span class="tip"></span>
@@ -68,7 +68,7 @@
             <div class="col-lg">
                 <!-- Single Progress Bar -->
                 <div class="single_progress_bar">
-                    <p>{{$d->nm_hama}}</p>
+                    <p class="mb-4">Hama {{$d->nm_hama}}</p>
                     <div id="bar3" class="barfiller">
                         <div class="tipWrap">
                             <span class="tip"></span>
@@ -89,7 +89,7 @@
             <div class="col-lg">
                 <!-- Single Progress Bar -->
                 <div class="single_progress_bar">
-                    <p>{{$f->nm_hama}}</p>
+                    <p class="mb-4">Hama {{$f->nm_hama}}</p>
                     <div id="bar1" class="barfiller">
                         <div class="tipWrap">
                             <span class="tip"></span>
@@ -101,7 +101,7 @@
             <div class="col-lg">
                 <!-- Single Progress Bar -->
                 <div class="single_progress_bar">
-                    <p>{{$h->nm_hama}}</p>
+                    <p class="mb-4">Hama {{$h->nm_hama}}</p>
                     <div id="bar2" class="barfiller">
                         <div class="tipWrap">
                             <span class="tip"></span>
@@ -119,7 +119,7 @@
             <div class="col-lg">
                 <!-- Single Progress Bar -->
                 <div class="single_progress_bar">
-                    <p>{{$j->nm_hama}}</p>
+                    <p class="mb-4">Hama {{$j->nm_hama}}</p>
                     <div id="bar1" class="barfiller">
                         <div class="tipWrap">
                             <span class="tip"></span>
@@ -137,7 +137,7 @@
             <div class="col-lg">
                 <!-- Single Progress Bar -->
                 <div class="single_progress_bar">
-                    <p>{{$l->nm_hama}}</p>
+                    <p class="mb-4">Hama {{$l->nm_hama}}</p>
                     <div id="bar1" class="barfiller">
                         <div class="tipWrap">
                             <span class="tip"></span>
@@ -150,7 +150,7 @@
             <div class="col-lg">
                 <!-- Single Progress Bar -->
                 <div class="single_progress_bar">
-                    <p>{{$hasil->hama->nm_hama}}</p>
+                    <p class="mb-4">Hama {{$hasil->hama->nm_hama}}</p>
                     <div id="bar1" class="barfiller">
                         <div class="tipWrap">
                             <span class="tip"></span>
@@ -210,8 +210,13 @@
                                             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
                                                 <div class="carousel-inner">
                                                     <div class="carousel-item active">
-                                                        <a class="product-img" href="{{ asset('storage/'.$b->foto) }}" title="Product Image">
+                                                        <a class="product-img" href="{{ asset('storage/'.$b->foto) }}" title="Hama">
                                                             <img class="d-block w-100" src="{{ asset('storage/'.$b->foto) }}" alt="1">
+                                                        </a>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <a class="product-img" href="{{ asset('storage/'.$b->foto2) }}" title="Hama">
+                                                            <img class="d-block w-100" src="{{ asset('storage/'.$b->foto2) }}" alt="1">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -221,15 +226,9 @@
 
                                     <div class="col-12 col-md-6">
                                         <div class="single_product_desc">
-                                            <h4 class="title">{{$b->nm_hama}}</h4>
+                                            <h6 class="title">Solusi Pengendalian Hama</h6>
                                             <div class="short_overview">
-                                                <p>{{$b->solusi}}</p>
-                                            </div>
-
-                                            <div class="products--meta">
-                                                <p><span>Tanggal Konsultasi:</span> <span>{{$hasil->waktu}}</span></p>
-                                                <p><span>Kode Hama:</span> <span>{{$b->kd_hama}}</span></p>
-                                                <p><span>Nama Hama:</span> <span>{{$b->nm_hama}}</span></p>
+                                                <p>{!!$b->solusi!!}</p>
                                             </div>
 
                                         </div>
@@ -246,7 +245,7 @@
                                             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
                                                 <div class="carousel-inner">
                                                     <div class="carousel-item active">
-                                                        <a class="product-img" href="{{ asset('storage/'.$y->foto) }}" title="Product Image">
+                                                        <a class="product-img" href="{{ asset('storage/'.$y->foto) }}" title="Hama">
                                                             <img class="d-block w-100" src="{{ asset('storage/'.$y->foto) }}" alt="1">
                                                         </a>
                                                     </div>
@@ -257,15 +256,9 @@
 
                                     <div class="col-12 col-md-6">
                                         <div class="single_product_desc">
-                                            <h4 class="title">{{$y->nm_hama}}</h4>
+                                            <h6 class="title">Solusi Pengendalian Hama</h6>
                                             <div class="short_overview">
-                                                <p>{{$y->solusi}}</p>
-                                            </div>
-
-                                            <div class="products--meta">
-                                                <p><span>Tanggal Konsultasi:</span> <span>{{$hasil->waktu}}</span></p>
-                                                <p><span>Kode Hama:</span> <span>{{$y->kd_hama}}</span></p>
-                                                <p><span>Nama Hama:</span> <span>{{$y->nm_hama}}</span></p>
+                                                <p>{!!$y->solusi!!}</p>
                                             </div>
 
                                         </div>
@@ -282,8 +275,13 @@
                                             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
                                                 <div class="carousel-inner">
                                                     <div class="carousel-item active">
-                                                        <a class="product-img" href="{{ asset('storage/'.$d->foto) }}" title="Product Image">
+                                                        <a class="product-img" href="{{ asset('storage/'.$d->foto) }}" title="Hama">
                                                             <img class="d-block w-100" src="{{ asset('storage/'.$d->foto) }}" alt="1">
+                                                        </a>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <a class="product-img" href="{{ asset('storage/'.$d->foto2) }}" title="Hama">
+                                                            <img class="d-block w-100" src="{{ asset('storage/'.$d->foto2) }}" alt="1">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -293,15 +291,9 @@
 
                                     <div class="col-12 col-md-6">
                                         <div class="single_product_desc">
-                                            <h4 class="title">{{$d->nm_hama}}</h4>
+                                            <h6 class="title">Solusi Pengendalian Hama</h6>
                                             <div class="short_overview">
-                                                <p>{{$d->solusi}}</p>
-                                            </div>
-
-                                            <div class="products--meta">
-                                                <p><span>Tanggal Konsultasi:</span> <span>{{$hasil->waktu}}</span></p>
-                                                <p><span>Kode Hama:</span> <span>{{$d->kd_hama}}</span></p>
-                                                <p><span>Nama Hama:</span> <span>{{$d->nm_hama}}</span></p>
+                                                <p>{!!$d->solusi!!}</p>
                                             </div>
 
                                         </div>
@@ -319,8 +311,13 @@
                                             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
                                                 <div class="carousel-inner">
                                                     <div class="carousel-item active">
-                                                        <a class="product-img" href="{{ asset('storage/'.$f->foto) }}" title="Product Image">
+                                                        <a class="product-img" href="{{ asset('storage/'.$f->foto) }}" title="Hama">
                                                             <img class="d-block w-100" src="{{ asset('storage/'.$f->foto) }}" alt="1">
+                                                        </a>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <a class="product-img" href="{{ asset('storage/'.$f->foto2) }}" title="Hama">
+                                                            <img class="d-block w-100" src="{{ asset('storage/'.$f->foto2) }}" alt="1">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -330,15 +327,9 @@
 
                                     <div class="col-12 col-md-6">
                                         <div class="single_product_desc">
-                                            <h4 class="title">{{$f->nm_hama}}</h4>
+                                            <h6 class="title">Solusi Pengendalian Hama</h6>
                                             <div class="short_overview">
-                                                <p>{{$f->solusi}}</p>
-                                            </div>
-
-                                            <div class="products--meta">
-                                                <p><span>Tanggal Konsultasi:</span> <span>{{$hasil->waktu}}</span></p>
-                                                <p><span>Kode Hama:</span> <span>{{$f->kd_hama}}</span></p>
-                                                <p><span>Nama Hama:</span> <span>{{$f->nm_hama}}</span></p>
+                                                <p>{!!$f->solusi!!}</p>
                                             </div>
 
                                         </div>
@@ -355,8 +346,13 @@
                                             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
                                                 <div class="carousel-inner">
                                                     <div class="carousel-item active">
-                                                        <a class="product-img" href="{{ asset('storage/'.$h->foto) }}" title="Product Image">
+                                                        <a class="product-img" href="{{ asset('storage/'.$h->foto) }}" title="Hama">
                                                             <img class="d-block w-100" src="{{ asset('storage/'.$h->foto) }}" alt="1">
+                                                        </a>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <a class="product-img" href="{{ asset('storage/'.$h->foto2) }}" title="Hama">
+                                                            <img class="d-block w-100" src="{{ asset('storage/'.$h->foto2) }}" alt="1">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -366,15 +362,9 @@
 
                                     <div class="col-12 col-md-6">
                                         <div class="single_product_desc">
-                                            <h4 class="title">{{$h->nm_hama}}</h4>
+                                            <h6 class="title">Solusi Pengendalian Hama</h6>
                                             <div class="short_overview">
-                                                <p>{{$h->solusi}}</p>
-                                            </div>
-
-                                            <div class="products--meta">
-                                                <p><span>Tanggal Konsultasi:</span> <span>{{$hasil->waktu}}</span></p>
-                                                <p><span>Kode Hama:</span> <span>{{$h->kd_hama}}</span></p>
-                                                <p><span>Nama Hama:</span> <span>{{$h->nm_hama}}</span></p>
+                                                <p>{!!$h->solusi!!}</p>
                                             </div>
 
                                         </div>
@@ -392,8 +382,13 @@
                                             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
                                                 <div class="carousel-inner">
                                                     <div class="carousel-item active">
-                                                        <a class="product-img" href="{{ asset('storage/'.$j->foto) }}" title="Product Image">
+                                                        <a class="product-img" href="{{ asset('storage/'.$j->foto) }}" title="Hama">
                                                             <img class="d-block w-100" src="{{ asset('storage/'.$j->foto) }}" alt="1">
+                                                        </a>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <a class="product-img" href="{{ asset('storage/'.$j->foto2) }}" title="Hama">
+                                                            <img class="d-block w-100" src="{{ asset('storage/'.$j->foto2) }}" alt="1">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -403,15 +398,9 @@
 
                                     <div class="col-12 col-md-6">
                                         <div class="single_product_desc">
-                                            <h4 class="title">{{$j->nm_hama}}</h4>
+                                            <h6 class="title">Solusi Pengendalian Hama</h6>
                                             <div class="short_overview">
-                                                <p>{{$j->solusi}}</p>
-                                            </div>
-
-                                            <div class="products--meta">
-                                                <p><span>Tanggal Konsultasi:</span> <span>{{$hasil->waktu}}</span></p>
-                                                <p><span>Kode Hama:</span> <span>{{$j->kd_hama}}</span></p>
-                                                <p><span>Nama Hama:</span> <span>{{$j->nm_hama}}</span></p>
+                                                <p>{!!$j->solusi!!}</p>
                                             </div>
 
                                         </div>
@@ -429,8 +418,13 @@
                                             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
                                                 <div class="carousel-inner">
                                                     <div class="carousel-item active">
-                                                        <a class="product-img" href="{{ asset('storage/'.$l->foto) }}" title="Product Image">
+                                                        <a class="product-img" href="{{ asset('storage/'.$l->foto) }}" title="Hama">
                                                             <img class="d-block w-100" src="{{ asset('storage/'.$l->foto) }}" alt="1">
+                                                        </a>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <a class="product-img" href="{{ asset('storage/'.$l->foto2) }}" title="Hama">
+                                                            <img class="d-block w-100" src="{{ asset('storage/'.$l->foto2) }}" alt="1">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -440,15 +434,9 @@
 
                                     <div class="col-12 col-md-6">
                                         <div class="single_product_desc">
-                                            <h4 class="title">{{$l->nm_hama}}</h4>
+                                            <h6 class="title">Solusi Pengendalian Hama</h6>
                                             <div class="short_overview">
-                                                <p>{{$l->solusi}}</p>
-                                            </div>
-
-                                            <div class="products--meta">
-                                                <p><span>Tanggal Konsultasi:</span> <span>{{$hasil->waktu}}</span></p>
-                                                <p><span>Kode Hama:</span> <span>{{$l->kd_hama}}</span></p>
-                                                <p><span>Nama Hama:</span> <span>{{$l->nm_hama}}</span></p>
+                                                <p>{!!$l->solusi!!}</p>
                                             </div>
 
                                         </div>
@@ -466,8 +454,13 @@
                                             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
                                                 <div class="carousel-inner">
                                                     <div class="carousel-item active">
-                                                        <a class="product-img" href="{{ asset('storage/'.$hasil->hama->foto) }}" title="Product Image">
+                                                        <a class="product-img" href="{{ asset('storage/'.$hasil->hama->foto) }}" title="Hama">
                                                             <img class="d-block w-100" src="{{ asset('storage/'.$hasil->hama->foto) }}" alt="1">
+                                                        </a>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <a class="product-img" href="{{ asset('storage/'.$hasil->hama->foto2) }}" title="Hama">
+                                                            <img class="d-block w-100" src="{{ asset('storage/'.$hasil->hama->foto2) }}" alt="1">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -477,17 +470,10 @@
 
                                     <div class="col-12 col-md-6">
                                         <div class="single_product_desc">
-                                            <h4 class="title">{{$hasil->hama->nm_hama}}</h4>
+                                            <h6 class="title">Solusi Pengendalian Hama</h4>
                                             <div class="short_overview">
-                                                <p>{{$hasil->hama->solusi}}</p>
+                                                <p>{!!$hasil->hama->solusi!!}</p>
                                             </div>
-
-                                            <div class="products--meta">
-                                                <p><span>Tanggal Konsultasi:</span> <span>{{$hasil->waktu}}</span></p>
-                                                <p><span>Kode Hama:</span> <span>{{$hasil->kd_hama}}</span></p>
-                                                <p><span>Nama Hama:</span> <span>{{$hasil->hama->nm_hama}}</span></p>
-                                            </div>
-
                                         </div>
                                     </div>
                                 </div>

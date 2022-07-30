@@ -46,15 +46,14 @@
 
                 <div class="col-12 col-md-6">
                     <div class="single_product_desc">
-                        <h4 class="title">{{$hama->nm_hama}}</h4>
+                        <h4 class="title">Hama {{$hama->nm_hama}}</h4>
                         <div class="short_overview">
-                            <p>{{$hama->deskripsi}}</p>
+                            <p style="text-align:justify;">{{$hama->deskripsi}}</p>
                         </div>
 
                         <div class="products--meta">
-                            <p><span>Kode Hama:</span> <span>{{$hama->kd_hama}}</span></p>
                             <p><span>Nama Hama:</span> <span>{{$hama->nm_hama}}</span></p>
-                            <p><span>Solusi:</span> <span>{{$hama->solusi}}</span></p>
+                            <p><span>Solusi:</span> <span>{!!$hama->solusi!!}</span></p>
                         </div>
 
                     </div>

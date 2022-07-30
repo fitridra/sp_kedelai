@@ -49,7 +49,7 @@
                                             <td>{{$hama->kd_hama}}</td>
                                             <td>{{$hama->nm_hama}}</td>
                                             <td style="white-space: normal">{{$hama->deskripsi}}</td>
-                                            <td style="white-space: normal">{{$hama->solusi}}</td>
+                                            <td style="white-space: normal">{!!$hama->solusi!!}</td>
                                             <td>
                                                 <div class="card user-info-card">
                                                     <div class="user-profile"><img src="{{ asset('storage/'.$hama->foto) }}">

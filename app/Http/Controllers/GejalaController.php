@@ -27,14 +27,14 @@ class GejalaController extends Controller
 
 	public function tambah()
 	{
-		$nilai_prior = request()->nilai_prior; //GaHa
-		$nilai_cpt = request()->nilai_cpt; //GaHt
+		$nilai_prior = request()->nilai_prior; //GaHa b3
+		$nilai_cpt = request()->nilai_cpt; //GaHt d3
 
-		$priorAdaGejala = $nilai_prior;
-		$priorTidakadaGejala = 1 - $nilai_prior;
+		$priorAdaHama = $nilai_cpt;
+		$priorTidakadaHama = 1 - $nilai_cpt;
 
-		$JPD_GaHa = $nilai_prior * $priorAdaGejala;
-		$JPD_GaHt = $nilai_cpt * $priorTidakadaGejala;
+		$JPD_GaHa = $nilai_prior * $priorAdaHama;
+		$JPD_GaHt = $nilai_cpt * $priorTidakadaHama;
 
 		$nilai_posterior = $JPD_GaHa / ($JPD_GaHa + $JPD_GaHt);
 
@@ -67,11 +67,11 @@ class GejalaController extends Controller
 		$nilai_prior = $request->nilai_prior; //GaHa
 		$nilai_cpt = $request->nilai_cpt; //GaHt
 
-		$priorAdaGejala = $nilai_prior;
-		$priorTidakadaGejala = 1 - $nilai_prior;
+		$priorAdaHama = $nilai_cpt;
+		$priorTidakadaHama = 1 - $nilai_cpt;
 
-		$JPD_GaHa = $nilai_prior * $priorAdaGejala;
-		$JPD_GaHt = $nilai_cpt * $priorTidakadaGejala;
+		$JPD_GaHa = $nilai_prior * $priorAdaHama;
+		$JPD_GaHt = $nilai_cpt * $priorTidakadaHama;
 
 		$nilai_posterior = $JPD_GaHa / ($JPD_GaHa + $JPD_GaHt);
 
@@ -132,11 +132,10 @@ class GejalaController extends Controller
 		$dataJawaban = Jawaban::where('id', auth()->user()->id)->orderBy('id_jawaban', 'asc')->pluck('id_gejala')->toArray(); //daftar data jawaban
 		$pilihanJawaban = Jawaban::where('id', auth()->user()->id)->orderBy('id_jawaban', 'asc')->pluck('pilihan')->toArray(); //pilihan dari data jawaban (salah/benar)
 		$jumlahJawaban = Jawaban::where('id', auth()->user()->id)->count('id_jawaban'); //jumlah jawaban saat ini
-
+		// dd($dataJawaban);
 		$irisanGejala1 = Basisaturan::groupby('id_gejala') // mencari gejala terbanyak irisannya pertama kali
 			->orderByRaw('COUNT(*) DESC')
 			->pluck('id_gejala')->toArray();
-
 		if ($jumlahJawaban == null) { //jika jawaban masih nol
 			$tampilGejala = Basisaturan::select('id_gejala')->where('id_gejala', $irisanGejala1[0])->first(); //tampilkan gejala berdasarkan irisan terbanyak
 		} elseif ($jumlahJawaban == 1) { //jika jawaban sama dengan 1
@@ -209,7 +208,7 @@ class GejalaController extends Controller
 
 			if ($firstPilihan == 1 && $lastPilihan == 1) { //jika kedua pilihan di jawab iya
 				$indexHama = Basisaturan::select('kd_hama') //hama pada gejala yang terdapat pada dua index 
-					->where('id_gejala', [$dataJawaban[$lastIndex], $dataJawaban[$firstIndex]])
+					->whereIn('id_gejala', [$dataJawaban[$lastIndex], $dataJawaban[$firstIndex]])
 					->groupby('kd_hama')
 					->orderByRaw('COUNT(*) DESC')
 					->pluck('kd_hama');
@@ -218,25 +217,26 @@ class GejalaController extends Controller
 					->whereIn('kd_hama', $indexHama)
 					->whereNotIn('id_gejala', $dataJawaban)
 					->pluck('id_gejala')->toArray();
-
+				
 				if ($indexHama->count('kd_hama') != 1) { // jika hasil hama pada index lebih dari satu
 					$hamaHasil = Hasil::select('hama') //melihat hama berdasarkan data hasil
 						->whereIn('hama', $indexHama)
 						->groupby('hama')
 						->orderByRaw('COUNT(*) DESC')
 						->pluck('hama')->toArray();
-
-					if ($hamaHasil == null) {
+					
+					if ($indexHama == null) {
 						return redirect()->route('selesai');
-					} elseif ($hamaHasil != null) {
+					} elseif ($indexHama != null) {
 						$gejalaHama = Basisaturan::select('id_gejala') //lalu dari hama tersebut dilihat gejala nya apa saja dari hama terbanyak tadi
-							->where('kd_hama', $hamaHasil[0])
+							->where('kd_hama', $indexHama[0])
 							->whereNotIn('id_gejala', $dataJawaban)
 							->pluck('id_gejala')->toArray();
 
 						$tampilGejala = Basisaturan::select('id_gejala') // tampilkan gejala berdasarkan data hasil
-							->whereIn('id_gejala', $gejalaHama)
+							->where('id_gejala', $gejalaHama)
 							->first();
+						// dd($tampilGejala);
 					}
 				} elseif ($indexHama->count('kd_hama') == 1) { //jika hasil hama pada index tersebut sama dengan satu
 					if ($indexGejala == null) {
@@ -248,7 +248,7 @@ class GejalaController extends Controller
 					}
 				}
 			} elseif ($firstPilihan == 1 && $lastPilihan == 0) { //jika hanya pilihan pertama yang dijawab iya
-
+				
 				$firstHama = Basisaturan::select('kd_hama') //hama pada gejala yang dipilih pertama
 					->whereIn('id_gejala', [$dataJawaban[$firstIndex]])
 					->pluck('kd_hama')->toArray();
@@ -268,7 +268,7 @@ class GejalaController extends Controller
 				$callBack = array_map(function ($arrayData) {
 					return $arrayData + 1;
 				}, $idBasis);
-
+				
 				$jumlahIrisan = Basisaturan::where('id_gejala', $dataJawaban[$firstIndex])->pluck('id_gejala')->count('id_gejala'); //mencari jumlah irisan dari gejala
 
 				if ($jumlahIrisan != 1) { //jika jumlah lebih dari satu
@@ -567,7 +567,7 @@ class GejalaController extends Controller
 			$bobot3 = $totalBobot3 / $countJawaban;
 
 			$nilai = '["' . number_format($bobot1, 2, '.', '') . '","' . number_format($bobot2, 2, '.', '') . '","' . number_format($bobot3, 2, '.', '') . '"]';
-			dd($nilai);
+			// dd($nilai);
 		} elseif ($trueHama2->count('kd_hama') == 1) {
 			$bobot1 = $probabilitas / $countJawaban;
 			$nilai = '["' . number_format($bobot1, 2, '.', '') . '"]';
