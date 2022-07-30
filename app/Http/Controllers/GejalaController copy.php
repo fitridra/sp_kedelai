@@ -7,6 +7,7 @@ use App\Models\Gejala;
 use App\Models\Jawaban;
 use App\Models\Hasil;
 use App\Models\Basisaturan;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 class GejalaController extends Controller
@@ -198,7 +199,7 @@ class GejalaController extends Controller
 			} elseif ($pilihanJawaban[0] == 0) { //jika user memilih tidak pada pilihan pertama
 				$tampilGejala = Basisaturan::select('id_gejala')->where('id_gejala', $notGejala[0])->first(); //tampilkan gejala dengan irisan terbesar lainnya
 			}
-		} elseif ($jumlahJawaban == 2) { //jika jumlah jawaban sudah lebih dari 1
+		} elseif ($jumlahJawaban > 1) { //jika jumlah jawaban sudah lebih dari 1
 			$lastIndex = $jumlahJawaban - 1; //index terakhir
 			$firstIndex = $lastIndex - 1; //index awal
 
@@ -470,8 +471,6 @@ class GejalaController extends Controller
 					}
 				}
 			}
-		}else if ($jumlahJawaban > 2){
-
 		}
 		return view('konsultasi.konsultasi_detail', compact('tampilGejala'));
 	}
