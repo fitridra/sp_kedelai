@@ -17,6 +17,14 @@
                                 {{session('sukses')}}
                             </div>
                             @endif
+                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                Grafik
+                            </button>
+
+                            <div class="collapse" id="collapseExample">
+                                <div class="card card-body" id="container">
+                                </div>
+                            </div>
                             <div class="table-responsive pt-3">
                                 <table class="table table-bordered">
                                     <thead>
@@ -100,3 +108,106 @@
         </div>
 
         @endsection
+
+        @section('chart')
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+        <script>
+            // Radialize the colors
+            Highcharts.setOptions({
+                colors: Highcharts.map(Highcharts.getOptions().colors, function(color) {
+                    return {
+                        radialGradient: {
+                            cx: 0.5,
+                            cy: 0.3,
+                            r: 0.7
+                        },
+                        stops: [
+                            [0, color],
+                            [1, Highcharts.color(color).brighten(-0.3).get('rgb')] // darken
+                        ]
+                    };
+                })
+            });
+
+            // Build the chart
+            Highcharts.chart('container', {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: 'Grafik Konsultasi Sistem Pakar Kedelai'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.y}</b>'
+                },
+                accessibility: {
+                    point: {
+                        valueSuffix: '%'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f}%',
+                            connectorColor: 'silver'
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Jumlah',
+                    data: [{
+                            name: 'Tungau Merah',
+                            y: {{$grafik1}}
+                        },
+                        
+                        {
+                            name: 'Ulat Grayak',
+                            y: {{$grafik2}}
+                        },
+                        {
+                            name: 'Ulat Jengkal',
+                            y: {{$grafik3}}
+                        },
+                        {
+                            name: 'Ulat Penggulung Daun',
+                            y: {{$grafik4}}
+                        },
+                        {
+                            name: 'Kepik Coklat',
+                            y: {{$grafik5}}
+                        },
+                        {
+                            name: 'Kepik Piezodorus',
+                            y: {{$grafik6}}
+                        },
+                        {
+                            name: 'Penggerek Polong Kedelai',
+                            y: {{$grafik7}}
+                        },
+                        {
+                            name: 'Wereng Hijau Kedelai',
+                            y: {{$grafik8}}
+                        },
+                        {
+                            name: 'Kutu Kebul',
+                            y: {{$grafik9}}
+                        },
+                        {
+                            name: 'Belalang',
+                            y: {{$grafik10}}
+                        }
+                    ]
+                }]
+            });
+        </script>
+        @stop

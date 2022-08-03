@@ -36,7 +36,6 @@
 
         </div>
         <!-- main-panel ends -->
-
     </div>
     <!-- page-body-wrapper ends -->
     </div>
@@ -63,6 +62,9 @@
     <script src="{{asset('assets/admin/js/dashboard.js')}}"></script>
     <script src="{{asset('assets/admin/js/Chart.roundedBarCharts.js')}}"></script>
     <!-- End custom js for this page-->
+
+    @yield('chart')
+
 </body>
 
 </html>

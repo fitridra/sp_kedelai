@@ -280,13 +280,16 @@ class GejalaController extends Controller
 
 				$pilihanJawaban = Jawaban::where('id', auth()->user()->id)->where('pilihan', 1)->pluck('id_gejala')->toArray(); //pilihan dari data jawaban (salah/benar)
 
-				// $firstHama1 = Basisaturan::select('kd_hama') //hama pada gejala yang dipilih pertama
-				// 	->whereIn('id_gejala', [$dataJawaban[$firstIndex]])
-				// 	->whereIn('id_gejala', $pilihanJawaban)
-				// 	->groupby('kd_hama')
-				// 	->orderByRaw('COUNT(*) DESC')
-				// 	->pluck('kd_hama')->toArray();
+				$jawaban = Basisaturan::select('kd_hama') //hama pada gejala yang dipilih pertama
+					->whereIn('id_gejala', $pilihanJawaban)
+					->pluck('kd_hama')->toArray();
 
+				$jawabanUrut = Basisaturan::select('kd_hama') //hama pada gejala yang dipilih pertama
+					->whereIn('id_gejala', $pilihanJawaban)
+					->groupby('kd_hama')
+					->orderByRaw('COUNT(*) DESC')
+					->pluck('kd_hama')->toArray();
+				// dd($jawabanUrut);
 				$firstGejala = Basisaturan::select('id_gejala') //mencari gejala dengan irisan terbanyak pada hama gejala yang pertama
 					->whereIn('kd_hama', $firstHama)
 					->groupby('id_gejala')
@@ -304,7 +307,7 @@ class GejalaController extends Controller
 				}, $idBasis);
 
 				$jumlahIrisan = Basisaturan::where('id_gejala', $dataJawaban[$firstIndex])->pluck('id_gejala')->count('id_gejala'); //mencari jumlah irisan dari gejala
-				// dd($jumlahIrisan);
+				// dd($firstGejala);
 				if ($jumlahIrisan != 1) { //jika jumlah lebih dari satu
 
 					$idBasis = Basisaturan::select('id_basisaturan')
@@ -312,29 +315,22 @@ class GejalaController extends Controller
 						->whereNotIn('id_gejala', $dataJawaban)
 						->pluck('id_basisaturan')->toArray();
 
-					$callBack = array_map(function ($arrayData) {
-						return $arrayData + 1;
-					}, $idBasis);
+					// $callBack = array_map(function ($arrayData) {
+					// 	return $arrayData + 1;
+					// }, $idBasis);
 
 					$callbackHama = Basisaturan::select('kd_hama')
-						->whereIn('id_basisaturan', $callBack)
+						->whereIn('id_basisaturan', $idBasis)
 						->whereNotIn('id_gejala', $dataJawaban)
 						->pluck('kd_hama')->toArray();
 
-					$callbackHamaa = Basisaturan::select('kd_hama')
-						->whereIn('id_basisaturan', $callBack)
-						->whereNotIn('id_gejala', $dataJawaban)
-						->groupby('kd_hama')
-						->orderByRaw('COUNT(*) DESC')
-						->pluck('kd_hama')->toArray();
-
-					$a = array_count_values($callbackHama);
+					$a = array_count_values($jawaban);
 
 					$notHama = Basisaturan::select('kd_hama')
 						->where('id_gejala', $dataJawaban[$lastIndex])
 						->pluck('kd_hama');
-
-					if ($a[$callbackHamaa[0]] < 3) {
+					// dd($a);
+					if ($a[$jawabanUrut[0]] < 3 || ($a[$jawabanUrut[0]] == $a[$jawabanUrut[1]])) {
 						$hamaHasil = Hasil::select('hama') //mencari hama terbanyak berdasarkan data hasil
 							->whereIn('hama', $callbackHama)
 							->whereNotIn('hama', $notHama)
@@ -361,7 +357,7 @@ class GejalaController extends Controller
 								return redirect()->route('selesai');
 							}
 						}
-					}else{
+					} else {
 						if ($callbackHama == null) {
 							return redirect()->route('selesai');
 						} elseif ($callbackHama != null) {
