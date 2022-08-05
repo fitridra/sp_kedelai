@@ -307,7 +307,7 @@ class GejalaController extends Controller
 				}, $idBasis);
 
 				$jumlahIrisan = Basisaturan::where('id_gejala', $dataJawaban[$firstIndex])->pluck('id_gejala')->count('id_gejala'); //mencari jumlah irisan dari gejala
-				// dd($firstGejala);
+				// dd($jumlahIrisan);
 				if ($jumlahIrisan != 1) { //jika jumlah lebih dari satu
 
 					$idBasis = Basisaturan::select('id_basisaturan')
@@ -329,7 +329,7 @@ class GejalaController extends Controller
 					$notHama = Basisaturan::select('kd_hama')
 						->where('id_gejala', $dataJawaban[$lastIndex])
 						->pluck('kd_hama');
-					// dd($a);
+					// dd($a[$jawabanUrut[0]]);
 					if ($a[$jawabanUrut[0]] < 3 || ($a[$jawabanUrut[0]] == $a[$jawabanUrut[1]])) {
 						$hamaHasil = Hasil::select('hama') //mencari hama terbanyak berdasarkan data hasil
 							->whereIn('hama', $callbackHama)
@@ -337,7 +337,7 @@ class GejalaController extends Controller
 							->groupby('hama')
 							->orderByRaw('COUNT(*) DESC')
 							->pluck('hama')->toArray();
-
+						// dd($dataJawaban);
 						if ($hamaHasil == null) {
 							return redirect()->route('selesai');
 						} elseif ($hamaHasil != null) {
@@ -578,16 +578,18 @@ class GejalaController extends Controller
 						->whereIn('hama', $nullHama)
 						->whereNotIn('hama', $notHama)
 						->orderByRaw('COUNT(*) DESC')
-						->pluck('hama');
-
-					$nullGejala = Basisaturan::select('id_gejala') //mencari gejala kecuali dari data hama jawaban pertama karna di jawab tidak
+						->pluck('hama')->toArray();
+					// dd($notHama);
+					
+					if (!$otherHama) {
+						return redirect()->route('selesai');
+					} elseif ($otherHama) {
+						$nullGejala = Basisaturan::select('id_gejala') //mencari gejala kecuali dari data hama jawaban pertama karna di jawab tidak
 						->where('kd_hama', $otherHama[0])
 						->whereNotIn('id_gejala', $dataJawaban)
 						->pluck('id_gejala')->toArray();
 					// dd($nullGejala);
-					if ($nullGejala == null) {
-						return redirect()->route('selesai');
-					} elseif ($nullGejala != null) {
+
 						$tampilGejala = Basisaturan::select('id_gejala')->where('id_gejala', $nullGejala[0])->first(); //tampilkan gejala dengan irisan terbesar lainnya
 					}
 				}
