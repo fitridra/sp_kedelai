@@ -7,7 +7,6 @@ use App\Models\Gejala;
 use App\Models\Jawaban;
 use App\Models\Hasil;
 use App\Models\Basisaturan;
-use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 class GejalaController extends Controller

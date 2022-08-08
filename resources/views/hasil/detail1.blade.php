@@ -38,8 +38,6 @@
             $c = substr($hasil->kd_hama, -4, 2);
             $d = App\Models\Hama::where('kd_hama',$c)->first();
             $prob1a = substr($hasil->probabilitas, -20, 4);
-            $prob1b = substr($hasil->probabilitas, -13, 4);
-            $prob1c = substr($hasil->probabilitas, -6, 4);
             @endphp
             <div class="col-lg">
                 <!-- Single Progress Bar -->
@@ -53,30 +51,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg">
-                <!-- Single Progress Bar -->
-                <div class="single_progress_bar">
-                    <p class="mb-4">Hama {{$y->nm_hama}}</p>
-                    <div id="bar2" class="barfiller">
-                        <div class="tipWrap">
-                            <span class="tip"></span>
-                        </div>
-                        <span class="fill" data-percentage="{{$prob1b*100}}"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg">
-                <!-- Single Progress Bar -->
-                <div class="single_progress_bar">
-                    <p class="mb-4">Hama {{$d->nm_hama}}</p>
-                    <div id="bar3" class="barfiller">
-                        <div class="tipWrap">
-                            <span class="tip"></span>
-                        </div>
-                        <span class="fill" data-percentage="{{$prob1c*100}}"></span>
-                    </div>
-                </div>
-            </div>
+           
             @elseif(strlen($hasil->kd_hama) == 11)
             @php
             $e = substr($hasil->kd_hama, -9, 2);
@@ -98,18 +73,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg">
-                <!-- Single Progress Bar -->
-                <div class="single_progress_bar">
-                    <p class="mb-4">Hama {{$h->nm_hama}}</p>
-                    <div id="bar2" class="barfiller">
-                        <div class="tipWrap">
-                            <span class="tip"></span>
-                        </div>
-                        <span class="fill" data-percentage="{{$prob2b*100}}"></span>
-                    </div>
-                </div>
-            </div>
+            
             @elseif(strlen($hasil->kd_hama) == 6)
             @php
             $i = substr($hasil->kd_hama, -4, 2);
@@ -165,39 +129,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="product_details_tab clearfix">
-                    <!-- Tabs -->
-                    <ul class="nav nav-tabs" role="tablist" id="product-details-tab">
-                        @if(strlen($hasil->kd_hama) == 16)
-                        <li class="nav-item">
-                            <a href="#description" class="nav-link active" data-toggle="tab" role="tab">{{$b->nm_hama}}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#addi-info" class="nav-link" data-toggle="tab" role="tab">{{$y->nm_hama}}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#reviews" class="nav-link" data-toggle="tab" role="tab">{{$d->nm_hama}}</a>
-                        </li>
-                        @elseif(strlen($hasil->kd_hama) == 11)
-                        <li class="nav-item">
-                            <a href="#description" class="nav-link active" data-toggle="tab" role="tab">{{$f->nm_hama}}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#addi-info" class="nav-link" data-toggle="tab" role="tab">{{$h->nm_hama}}</a>
-                        </li>
-                        @elseif(strlen($hasil->kd_hama) == 6)
-                        <li class="nav-item">
-                            <a href="#description" class="nav-link active" data-toggle="tab" role="tab">{{$j->nm_hama}}</a>
-                        </li>
-                        @elseif(strlen($hasil->kd_hama) == 7)
-                        <li class="nav-item">
-                            <a href="#description" class="nav-link active" data-toggle="tab" role="tab">{{$l->nm_hama}}</a>
-                        </li>
-                        @else
-                        <li class="nav-item">
-                            <a href="#description" class="nav-link active" data-toggle="tab" role="tab">{{$hasil->hama->nm_hama}}</a>
-                        </li>
-                        @endif
-                    </ul>
+                    
                     <!-- Tab Content -->
                     <div class="tab-content">
                         @if(strlen($hasil->kd_hama) == 16)
