@@ -30,16 +30,10 @@
                                     <select class="form-control" name="role" required>
                                         @if($user->role == 2)
                                         <option value="2" selected>Admin</option>
-                                        <option value="3">Pakar</option>
-                                        <option value="1">Petani/Masyarakat Umum</option>
-                                        @elseif($user->role == 3)
-                                        <option value="3" selected>Pakar</option>
-                                        <option value="2">Admin</option>
                                         <option value="1">Petani/Masyarakat Umum</option>
                                         @else
                                         <option value="1" selected>Petani/Masyarakat Umum</option>
                                         <option value="2">Admin</option>
-                                        <option value="3">Pakar</option>
                                         @endif
                                     </select>
                                 </div>

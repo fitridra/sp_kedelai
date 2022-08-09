@@ -48,8 +48,6 @@
                                             <td>{{$user->email}}</td>
                                             @if($user->role == 2)
                                             <td>Admin</td>
-                                            @elseif($user->role == 3)
-                                            <td>Pakar</td>
                                             @else
                                             <td>Petani/Masyarakat Umum</td>
                                             @endif
@@ -110,7 +108,6 @@
                                     <option value="#" selected>Pilih Status Pengguna</option>
                                     <option value="1">Admin</option>
                                     <option value="2">Petani/Masyarakat Umum</option>
-                                    <option value="3">Pakar</option>
                                 </select>
                             </div>
 
