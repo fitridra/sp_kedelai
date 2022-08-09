@@ -51,9 +51,9 @@
                             <p style="text-align:justify;">{{$hama->deskripsi}}</p>
                         </div>
 
-                        <div class="products--meta">
-                            <p><span>Nama Hama:</span> <span>{{$hama->nm_hama}}</span></p>
-                            <p><span>Solusi:</span> <span>{!!$hama->solusi!!}</span></p>
+                        <a class="title">Solusi Pengendalian Hama</a>
+                        <div class="short_overview"  style="margin-left: 15px;">
+                            <p style="text-align:justify;">{!!$hama->solusi!!}</p>
                         </div>
 
                     </div>

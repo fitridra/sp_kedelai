@@ -33,16 +33,12 @@
             @php
             $a = substr($hasil->kd_hama, -14, 2);
             $b = App\Models\Hama::where('kd_hama',$a)->first();
-            $x = substr($hasil->kd_hama, -9, 2);
-            $y = App\Models\Hama::where('kd_hama',$x)->first();
-            $c = substr($hasil->kd_hama, -4, 2);
-            $d = App\Models\Hama::where('kd_hama',$c)->first();
             $prob1a = substr($hasil->probabilitas, -20, 4);
             @endphp
             <div class="col-lg">
                 <!-- Single Progress Bar -->
                 <div class="single_progress_bar">
-                    <p class="mb-4">Hama {{$b->nm_hama}}</p>
+                    <p class="mb-4"><a href="{{route('detail_hama',$b->kd_hama)}}" style="font-size: 16px;">Hama {{$b->nm_hama}}</a></p>
                     <div id="bar1" class="barfiller">
                         <div class="tipWrap">
                             <span class="tip"></span>
@@ -51,20 +47,17 @@
                     </div>
                 </div>
             </div>
-           
+
             @elseif(strlen($hasil->kd_hama) == 11)
             @php
             $e = substr($hasil->kd_hama, -9, 2);
             $f = App\Models\Hama::where('kd_hama',$e)->first();
-            $g = substr($hasil->kd_hama, -4, 2);
-            $h = App\Models\Hama::where('kd_hama',$g)->first();
-            $prob2a = substr($hasil->probabilitas, -13, 4); 
-            $prob2b = substr($hasil->probabilitas, -6, 4);
+            $prob2a = substr($hasil->probabilitas, -13, 4);
             @endphp
             <div class="col-lg">
                 <!-- Single Progress Bar -->
                 <div class="single_progress_bar">
-                    <p class="mb-4">Hama {{$f->nm_hama}}</p>
+                    <p class="mb-4"><a href="{{route('detail_hama',$f->kd_hama)}}" style="font-size: 16px;">Hama {{$f->nm_hama}}</a></p>
                     <div id="bar1" class="barfiller">
                         <div class="tipWrap">
                             <span class="tip"></span>
@@ -73,7 +66,7 @@
                     </div>
                 </div>
             </div>
-            
+
             @elseif(strlen($hasil->kd_hama) == 6)
             @php
             $i = substr($hasil->kd_hama, -4, 2);
@@ -83,7 +76,7 @@
             <div class="col-lg">
                 <!-- Single Progress Bar -->
                 <div class="single_progress_bar">
-                    <p class="mb-4">Hama {{$j->nm_hama}}</p>
+                    <p class="mb-4"><a href="{{route('detail_hama',$j->kd_hama)}}" style="font-size: 16px;">Hama {{$j->nm_hama}}</a></p>
                     <div id="bar1" class="barfiller">
                         <div class="tipWrap">
                             <span class="tip"></span>
@@ -101,7 +94,7 @@
             <div class="col-lg">
                 <!-- Single Progress Bar -->
                 <div class="single_progress_bar">
-                    <p class="mb-4">Hama {{$l->nm_hama}}</p>
+                    <p class="mb-4"><a href="{{route('detail_hama',$l->kd_hama)}}" style="font-size: 16px;">Hama {{$l->nm_hama}}</a></p>
                     <div id="bar1" class="barfiller">
                         <div class="tipWrap">
                             <span class="tip"></span>
@@ -114,7 +107,7 @@
             <div class="col-lg">
                 <!-- Single Progress Bar -->
                 <div class="single_progress_bar">
-                    <p class="mb-4">Hama {{$hasil->hama->nm_hama}}</p>
+                    <p class="mb-4"><a href="{{route('detail_hama',$hasil->hama)}}" style="font-size: 16px;">Hama {{$hasil->hama->nm_hama}}</a></p>
                     <div id="bar1" class="barfiller">
                         <div class="tipWrap">
                             <span class="tip"></span>
@@ -129,7 +122,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="product_details_tab clearfix">
-                    
+
                     <!-- Tab Content -->
                     <div class="tab-content">
                         @if(strlen($hasil->kd_hama) == 16)
@@ -159,73 +152,8 @@
                                     <div class="col-12 col-md-6">
                                         <div class="single_product_desc">
                                             <h6 class="title">Solusi Pengendalian Hama</h6>
-                                            <div class="short_overview">
+                                            <div class="short_overview" style="margin-left: 15px;">
                                                 <p>{!!$b->solusi!!}</p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane fade" id="addi-info">
-                            <div class="description_area">
-                                <div class="row justify-content-between">
-
-                                    <div class="col-12 col-md-6 col-lg-5">
-                                        <div class="single_product_thumb">
-                                            <div id="product_details_slider" class="carousel slide" data-ride="carousel">
-                                                <div class="carousel-inner">
-                                                    <div class="carousel-item active">
-                                                        <a class="product-img" href="{{ asset('storage/'.$y->foto) }}" title="Hama">
-                                                            <img class="d-block w-100" src="{{ asset('storage/'.$y->foto) }}" alt="1">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 col-md-6">
-                                        <div class="single_product_desc">
-                                            <h6 class="title">Solusi Pengendalian Hama</h6>
-                                            <div class="short_overview">
-                                                <p>{!!$y->solusi!!}</p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane fade" id="reviews">
-                            <div class="description_area">
-                                <div class="row justify-content-between">
-
-                                    <div class="col-12 col-md-6 col-lg-5">
-                                        <div class="single_product_thumb">
-                                            <div id="product_details_slider" class="carousel slide" data-ride="carousel">
-                                                <div class="carousel-inner">
-                                                    <div class="carousel-item active">
-                                                        <a class="product-img" href="{{ asset('storage/'.$d->foto) }}" title="Hama">
-                                                            <img class="d-block w-100" src="{{ asset('storage/'.$d->foto) }}" alt="1">
-                                                        </a>
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <a class="product-img" href="{{ asset('storage/'.$d->foto2) }}" title="Hama">
-                                                            <img class="d-block w-100" src="{{ asset('storage/'.$d->foto2) }}" alt="1">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 col-md-6">
-                                        <div class="single_product_desc">
-                                            <h6 class="title">Solusi Pengendalian Hama</h6>
-                                            <div class="short_overview">
-                                                <p>{!!$d->solusi!!}</p>
                                             </div>
 
                                         </div>
@@ -260,43 +188,8 @@
                                     <div class="col-12 col-md-6">
                                         <div class="single_product_desc">
                                             <h6 class="title">Solusi Pengendalian Hama</h6>
-                                            <div class="short_overview">
+                                            <div class="short_overview" style="margin-left: 15px;">
                                                 <p>{!!$f->solusi!!}</p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane fade" id="addi-info">
-                            <div class="description_area">
-                                <div class="row justify-content-between">
-
-                                    <div class="col-12 col-md-6 col-lg-5">
-                                        <div class="single_product_thumb">
-                                            <div id="product_details_slider" class="carousel slide" data-ride="carousel">
-                                                <div class="carousel-inner">
-                                                    <div class="carousel-item active">
-                                                        <a class="product-img" href="{{ asset('storage/'.$h->foto) }}" title="Hama">
-                                                            <img class="d-block w-100" src="{{ asset('storage/'.$h->foto) }}" alt="1">
-                                                        </a>
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <a class="product-img" href="{{ asset('storage/'.$h->foto2) }}" title="Hama">
-                                                            <img class="d-block w-100" src="{{ asset('storage/'.$h->foto2) }}" alt="1">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 col-md-6">
-                                        <div class="single_product_desc">
-                                            <h6 class="title">Solusi Pengendalian Hama</h6>
-                                            <div class="short_overview">
-                                                <p>{!!$h->solusi!!}</p>
                                             </div>
 
                                         </div>
@@ -331,7 +224,7 @@
                                     <div class="col-12 col-md-6">
                                         <div class="single_product_desc">
                                             <h6 class="title">Solusi Pengendalian Hama</h6>
-                                            <div class="short_overview">
+                                            <div class="short_overview" style="margin-left: 15px;">
                                                 <p>{!!$j->solusi!!}</p>
                                             </div>
 
@@ -367,7 +260,7 @@
                                     <div class="col-12 col-md-6">
                                         <div class="single_product_desc">
                                             <h6 class="title">Solusi Pengendalian Hama</h6>
-                                            <div class="short_overview">
+                                            <div class="short_overview" style="margin-left: 15px;">
                                                 <p>{!!$l->solusi!!}</p>
                                             </div>
 
@@ -403,9 +296,9 @@
                                     <div class="col-12 col-md-6">
                                         <div class="single_product_desc">
                                             <h6 class="title">Solusi Pengendalian Hama</h4>
-                                            <div class="short_overview">
-                                                <p>{!!$hasil->hama->solusi!!}</p>
-                                            </div>
+                                                <div class="short_overview" style="margin-left: 15px;">
+                                                    <p>{!!$hasil->hama->solusi!!}</p>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
