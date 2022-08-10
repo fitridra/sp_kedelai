@@ -48,9 +48,14 @@ class UserController extends Controller
 		]);
 	}
 
-	public function index_admin()
+	public function index_admin(Request $request)
 	{
-		$data_user = User::paginate(5);
+		$data_user = User::when($request->cari, function ($query) use ($request) {
+			$query->where('nama', 'LIKE', "%{$request->cari}%");
+		})->paginate(5);
+
+		$data_user->appends($request->only('cari'));
+		
 		return view('user.index_admin', compact('data_user'));
 	}
 

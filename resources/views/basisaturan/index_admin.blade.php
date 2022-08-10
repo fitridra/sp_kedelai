@@ -21,7 +21,24 @@
                                 {{session('gagal')}}
                             </div>
                             @endif
-                            <button type="button" class="btn btn-info btn-icon-text mt-2 mb-2" data-toggle="modal" data-target="#tambah_basisaturan"><i class="ti-plus btn-icon-prepend"></i>Tambah</button>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-info btn-icon-text mt-2 mb-2" data-toggle="modal" data-target="#tambah_basisaturan"><i class="ti-plus btn-icon-prepend"></i>Tambah</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="btn-group-6" style="display: flex;justify-content: end;">
+                                        <form method="GET" action="{{ url()->current() }}">
+                                            <select class="form-control" name="cari" onchange="this.form.submit();">
+                                                <option value="#">Filter</option>
+                                                @foreach($data_hama as $hama)
+                                                <option value="{{$hama->kd_hama}}">{{$hama->nm_hama}}</option>
+                                                @endforeach
+                                            </select>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="table-responsive pt-3">
                                 <table class="table table-bordered">
                                     <thead>

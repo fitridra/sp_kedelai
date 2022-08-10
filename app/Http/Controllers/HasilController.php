@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hasil;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -23,9 +25,15 @@ class HasilController extends Controller
 		return view('hasil/detail', compact('hasil'));
 	}
 
-	public function index_admin()
+	public function index_admin(Request $request)
 	{
-		$data_hasil = Hasil::paginate(5);
+		$data_hasil = Hasil::when($request->cari, function ($query) use ($request) {
+			$query->where('id', 'LIKE', "%{$request->cari}%");
+		})->paginate(5);
+
+		$data_hasil->appends($request->only('cari'));
+
+		$data_user = User::all();
 		$grafik1 = Hasil::where('hama', 'H1')->count('hama');
 		$grafik2 = Hasil::where('hama', 'H2')->count('hama');
 		$grafik3 = Hasil::where('hama', 'H3')->count('hama');
@@ -37,7 +45,7 @@ class HasilController extends Controller
 		$grafik9 = Hasil::where('hama', 'H9')->count('hama');
 		$grafik10 = Hasil::where('hama', 'H10')->count('hama');
 
-		return view('hasil.index_admin', compact('data_hasil', 'grafik1', 'grafik2', 'grafik3', 'grafik4', 'grafik5', 'grafik6', 'grafik7', 'grafik8', 'grafik9', 'grafik10'));
+		return view('hasil.index_admin', compact('data_hasil','data_user', 'grafik1', 'grafik2', 'grafik3', 'grafik4', 'grafik5', 'grafik6', 'grafik7', 'grafik8', 'grafik9', 'grafik10'));
 	}
 
 	public function detail($id)

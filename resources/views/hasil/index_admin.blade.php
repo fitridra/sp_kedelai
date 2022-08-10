@@ -17,9 +17,26 @@
                                 {{session('sukses')}}
                             </div>
                             @endif
-                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                Grafik
-                            </button>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        Grafik
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="btn-group-6" style="display: flex;justify-content: end;">
+                                        <form method="GET" action="{{ url()->current() }}">
+                                            <select class="form-control" name="cari" onchange="this.form.submit();">
+                                                <option value="#">Filter</option>
+                                                @foreach($data_user as $user)
+                                                <option value="{{$user->id}}">{{$user->nama}}</option>
+                                                @endforeach
+                                            </select>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="collapse" id="collapseExample">
                                 <div class="card card-body" id="container">
@@ -167,44 +184,84 @@
                     name: 'Jumlah',
                     data: [{
                             name: 'Tungau Merah',
-                            y: {{$grafik1}}
+                            y: {
+                                {
+                                    $grafik1
+                                }
+                            }
                         },
-                        
+
                         {
                             name: 'Ulat Grayak',
-                            y: {{$grafik2}}
+                            y: {
+                                {
+                                    $grafik2
+                                }
+                            }
                         },
                         {
                             name: 'Ulat Jengkal',
-                            y: {{$grafik3}}
+                            y: {
+                                {
+                                    $grafik3
+                                }
+                            }
                         },
                         {
                             name: 'Ulat Penggulung Daun',
-                            y: {{$grafik4}}
+                            y: {
+                                {
+                                    $grafik4
+                                }
+                            }
                         },
                         {
                             name: 'Kepik Coklat',
-                            y: {{$grafik5}}
+                            y: {
+                                {
+                                    $grafik5
+                                }
+                            }
                         },
                         {
                             name: 'Kepik Piezodorus',
-                            y: {{$grafik6}}
+                            y: {
+                                {
+                                    $grafik6
+                                }
+                            }
                         },
                         {
                             name: 'Penggerek Polong Kedelai',
-                            y: {{$grafik7}}
+                            y: {
+                                {
+                                    $grafik7
+                                }
+                            }
                         },
                         {
                             name: 'Wereng Hijau Kedelai',
-                            y: {{$grafik8}}
+                            y: {
+                                {
+                                    $grafik8
+                                }
+                            }
                         },
                         {
                             name: 'Kutu Kebul',
-                            y: {{$grafik9}}
+                            y: {
+                                {
+                                    $grafik9
+                                }
+                            }
                         },
                         {
                             name: 'Belalang',
-                            y: {{$grafik10}}
+                            y: {
+                                {
+                                    $grafik10
+                                }
+                            }
                         }
                     ]
                 }]

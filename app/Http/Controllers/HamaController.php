@@ -11,6 +11,7 @@ class HamaController extends Controller
 	public function index()
 	{
 		$data_hama = Hama::paginate(4);
+	
 		$dataHama = Hasil::where('id', auth()->user()->id)->latest('id_hasil')->take(3)->get();
 		return view('hama.index', compact('data_hama','dataHama'));
 	}
@@ -21,9 +22,14 @@ class HamaController extends Controller
 		return view('hama/detail', compact('hama'));
 	}
 
-	public function index_admin()
+	public function index_admin(Request $request)
 	{
-		$data_hama = Hama::paginate(5);
+		$data_hama = Hama::when($request->cari, function ($query) use ($request) {
+			$query->where('nm_hama', 'LIKE', "%{$request->cari}%");
+		})->paginate(5);
+
+		$data_hama->appends($request->only('cari'));
+		
 		$id_hama = $data_hama->count('kd_hama');
 		return view('hama.index_admin', compact('data_hama', 'id_hama'));
 	}

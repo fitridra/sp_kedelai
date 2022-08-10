@@ -10,9 +10,14 @@ use Illuminate\Support\Str;
 
 class BasisaturanController extends Controller
 {
-	public function index_admin()
+	public function index_admin(Request $request)
 	{
-		$data_basisaturan = Basisaturan::paginate(5);
+		$data_basisaturan = Basisaturan::when($request->cari, function ($query) use ($request) {
+			$query->where('kd_hama', 'LIKE', "%{$request->cari}%");
+		})->paginate(5);
+
+		$data_basisaturan->appends($request->only('cari'));
+
 		$data_hama = Hama::all();
 		$data_gejala = Gejala::all();
 		return view('basisaturan.index_admin', compact('data_basisaturan', 'data_hama', 'data_gejala'));
