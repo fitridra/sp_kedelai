@@ -4,19 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\Hasil;
 use App\Models\User;
+use App\Models\Hama;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
 class HasilController extends Controller
 {
-	public function index($id_user)
+	public function index(Request $request,$id_user)
 	{
 		$riwayat1 = Hasil::where('id', $id_user)->get()->pluck('kd_hama');
-		$riwayat = Hasil::where('id', $id_user)->paginate(5);
+		$riwayat = Hasil::where('id', $id_user)->when($request->cari, function ($query) use ($request) {
+			$query->where('hama', 'LIKE', "%{$request->cari}%");
+		})->paginate(5);
+
+		$riwayat->appends($request->only('cari'));
+
+		$data_hama = Hama::all();
 		$id_user = Auth::user()->id;
 
-		return view('hasil.index', compact('riwayat', 'riwayat1', 'id_user'));
+		return view('hasil.index', compact('riwayat', 'riwayat1', 'id_user','data_hama'));
 	}
 
 	public function riwayat_hasil($id_hasil)

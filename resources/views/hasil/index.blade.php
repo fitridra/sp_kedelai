@@ -44,7 +44,16 @@
                                 <th>Probabilitas</th>
                                 <th>Tanggal Konsultasi</th>
                                 <th></th>
-                                <th></th>
+                                <th>
+                                    <form method="GET" action="{{ url()->current() }}">
+                                        <select class="form-control" name="cari" onchange="this.form.submit();">
+                                            <option value="#">Filter</option>
+                                            @foreach($data_hama as $hama)
+                                            <option value="{{$hama->kd_hama}}">{{$hama->nm_hama}}</option>
+                                            @endforeach
+                                        </select>
+                                    </form>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
