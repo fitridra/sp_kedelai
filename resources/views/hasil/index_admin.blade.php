@@ -184,84 +184,44 @@
                     name: 'Jumlah',
                     data: [{
                             name: 'Tungau Merah',
-                            y: {
-                                {
-                                    $grafik1
-                                }
-                            }
+                            y: {{$grafik1}}
                         },
 
                         {
                             name: 'Ulat Grayak',
-                            y: {
-                                {
-                                    $grafik2
-                                }
-                            }
+                            y: {{$grafik2}}
                         },
                         {
                             name: 'Ulat Jengkal',
-                            y: {
-                                {
-                                    $grafik3
-                                }
-                            }
+                            y: {{$grafik3}}
                         },
                         {
                             name: 'Ulat Penggulung Daun',
-                            y: {
-                                {
-                                    $grafik4
-                                }
-                            }
+                            y: {{$grafik4}}
                         },
                         {
                             name: 'Kepik Coklat',
-                            y: {
-                                {
-                                    $grafik5
-                                }
-                            }
+                            y: {{$grafik5}}
                         },
                         {
                             name: 'Kepik Piezodorus',
-                            y: {
-                                {
-                                    $grafik6
-                                }
-                            }
+                            y: {{$grafik6}}
                         },
                         {
                             name: 'Penggerek Polong Kedelai',
-                            y: {
-                                {
-                                    $grafik7
-                                }
-                            }
+                            y: {{$grafik7}}
                         },
                         {
                             name: 'Wereng Hijau Kedelai',
-                            y: {
-                                {
-                                    $grafik8
-                                }
-                            }
+                            y: {{$grafik8}}
                         },
                         {
                             name: 'Kutu Kebul',
-                            y: {
-                                {
-                                    $grafik9
-                                }
-                            }
+                            y: {{$grafik9}}
                         },
                         {
                             name: 'Belalang',
-                            y: {
-                                {
-                                    $grafik10
-                                }
-                            }
+                            y: {{$grafik10}}
                         }
                     ]
                 }]
