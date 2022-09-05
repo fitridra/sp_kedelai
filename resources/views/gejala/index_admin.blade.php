@@ -99,9 +99,7 @@
                     <div class="modal-body">
                         <form action="{{route('tambah_gejala')}}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group">
-                                <input class="form-control" type="hidden" name="id_gejala" value="{{$id_gejala+1}}" readonly>
-                            </div>
+                            <input class="form-control" type="hidden" name="id_gejala" value="{{$id_gejala+1}}" readonly>
 
                             <div class="form-group">
                                 <label class="form-label">Nama Gejala</label>
@@ -143,7 +141,7 @@
                         </span>
                     </div>
                     <form method="GET" action="{{ url()->current() }}">
-                    <input name="cari" type="text" class="form-control" id="navbar-search-input" placeholder="Search..." aria-label="search" aria-describedby="search">
+                        <input name="cari" type="text" class="form-control" id="navbar-search-input" placeholder="Search..." aria-label="search" aria-describedby="search">
                 </div>
             </li>
             </form>

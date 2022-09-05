@@ -20,7 +20,7 @@ class GejalaController extends Controller
 
 		$data_gejala->appends($request->only('cari'));
 
-		$id_gejala = $data_gejala->count('id_gejala');
+		$id_gejala = Gejala::all()->count('id_gejala');
 		return view('gejala.index_admin', compact('data_gejala', 'id_gejala'));
 	}
 

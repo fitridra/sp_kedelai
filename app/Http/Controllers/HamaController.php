@@ -30,7 +30,7 @@ class HamaController extends Controller
 
 		$data_hama->appends($request->only('cari'));
 		
-		$id_hama = $data_hama->count('kd_hama');
+		$id_hama = Hama::all()->count('kd_hama');
 		return view('hama.index_admin', compact('data_hama', 'id_hama'));
 	}
 
