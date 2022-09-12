@@ -38,7 +38,7 @@
             <div class="col-lg">
                 <!-- Single Progress Bar -->
                 <div class="single_progress_bar">
-                    <p class="mb-4"><a href="{{route('detail_hama',$b->kd_hama)}}" style="font-size: 16px;">Hama {{$b->nm_hama}}</a></p>
+                    <p class="mb-4"><a href="{{route('detail_hama',$b->kd_hama)}}" style="font-size: 24px;">Hama {{$b->nm_hama}}</a></p>
                     <div id="bar1" class="barfiller">
                         <div class="tipWrap">
                             <span class="tip"></span>
@@ -57,7 +57,7 @@
             <div class="col-lg">
                 <!-- Single Progress Bar -->
                 <div class="single_progress_bar">
-                    <p class="mb-4"><a href="{{route('detail_hama',$f->kd_hama)}}" style="font-size: 16px;">Hama {{$f->nm_hama}}</a></p>
+                    <p class="mb-4"><a href="{{route('detail_hama',$f->kd_hama)}}" style="font-size: 24px;">Hama {{$f->nm_hama}}</a></p>
                     <div id="bar1" class="barfiller">
                         <div class="tipWrap">
                             <span class="tip"></span>
@@ -76,7 +76,7 @@
             <div class="col-lg">
                 <!-- Single Progress Bar -->
                 <div class="single_progress_bar">
-                    <p class="mb-4"><a href="{{route('detail_hama',$j->kd_hama)}}" style="font-size: 16px;">Hama {{$j->nm_hama}}</a></p>
+                    <p class="mb-4"><a href="{{route('detail_hama',$j->kd_hama)}}" style="font-size: 24px;">Hama {{$j->nm_hama}}</a></p>
                     <div id="bar1" class="barfiller">
                         <div class="tipWrap">
                             <span class="tip"></span>
@@ -94,7 +94,7 @@
             <div class="col-lg">
                 <!-- Single Progress Bar -->
                 <div class="single_progress_bar">
-                    <p class="mb-4"><a href="{{route('detail_hama',$l->kd_hama)}}" style="font-size: 16px;">Hama {{$l->nm_hama}}</a></p>
+                    <p class="mb-4"><a href="{{route('detail_hama',$l->kd_hama)}}" style="font-size: 24px;">Hama {{$l->nm_hama}}</a></p>
                     <div id="bar1" class="barfiller">
                         <div class="tipWrap">
                             <span class="tip"></span>
@@ -107,7 +107,7 @@
             <div class="col-lg">
                 <!-- Single Progress Bar -->
                 <div class="single_progress_bar">
-                    <p class="mb-4"><a href="{{route('detail_hama',$hasil->hama)}}" style="font-size: 16px;">Hama {{$hasil->hama->nm_hama}}</a></p>
+                    <p class="mb-4"><a href="{{route('detail_hama',$hasil->hama)}}" style="font-size: 24px;">Hama {{$hasil->hama->nm_hama}}</a></p>
                     <div id="bar1" class="barfiller">
                         <div class="tipWrap">
                             <span class="tip"></span>
@@ -151,7 +151,7 @@
 
                                     <div class="col-12 col-md-6">
                                         <div class="single_product_desc">
-                                            <h6 class="title">Solusi Pengendalian Hama</h6>
+                                            <h6 class="title" style="font-size: 16px;">Solusi Pengendalian Hama</h6>
                                             <div class="short_overview" style="margin-left: 15px;">
                                                 <p>{!!$b->solusi!!}</p>
                                             </div>
@@ -187,7 +187,7 @@
 
                                     <div class="col-12 col-md-6">
                                         <div class="single_product_desc">
-                                            <h6 class="title">Solusi Pengendalian Hama</h6>
+                                            <h6 class="title" style="font-size: 16px;">Solusi Pengendalian Hama</h6>
                                             <div class="short_overview" style="margin-left: 15px;">
                                                 <p>{!!$f->solusi!!}</p>
                                             </div>
@@ -223,7 +223,7 @@
 
                                     <div class="col-12 col-md-6">
                                         <div class="single_product_desc">
-                                            <h6 class="title">Solusi Pengendalian Hama</h6>
+                                            <h6 class="title" style="font-size: 16px;">Solusi Pengendalian Hama</h6>
                                             <div class="short_overview" style="margin-left: 15px;">
                                                 <p>{!!$j->solusi!!}</p>
                                             </div>
@@ -259,7 +259,7 @@
 
                                     <div class="col-12 col-md-6">
                                         <div class="single_product_desc">
-                                            <h6 class="title">Solusi Pengendalian Hama</h6>
+                                            <h6 class="title" style="font-size: 16px;">Solusi Pengendalian Hama</h6>
                                             <div class="short_overview" style="margin-left: 15px;">
                                                 <p>{!!$l->solusi!!}</p>
                                             </div>

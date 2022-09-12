@@ -131,11 +131,14 @@ class GejalaController extends Controller
 		$dataJawaban = Jawaban::where('id', auth()->user()->id)->orderBy('id_jawaban', 'asc')->pluck('id_gejala')->toArray(); //daftar data jawaban
 		$pilihanJawaban = Jawaban::where('id', auth()->user()->id)->orderBy('id_jawaban', 'asc')->pluck('pilihan')->toArray(); //pilihan dari data jawaban (salah/benar)
 		$jumlahJawaban = Jawaban::where('id', auth()->user()->id)->count('id_jawaban'); //jumlah jawaban saat ini
-		// dd($dataJawaban);
+
+		$pilihanJawaban1 = Jawaban::where('id', auth()->user()->id)->where('pilihan', 1)->count('pilihan');
+		// dd($pilihanJawaban1);
 		$irisanGejala1 = Basisaturan::groupby('id_gejala') // mencari gejala terbanyak irisannya pertama kali
 			->orderByRaw('COUNT(*) DESC')
 			->pluck('id_gejala')->toArray();
 		// dd($irisanGejala1);
+
 		if ($jumlahJawaban == null) { //jika jawaban masih nol
 			$tampilGejala = Basisaturan::select('id_gejala')->where('id_gejala', $irisanGejala1[0])->first(); //tampilkan gejala berdasarkan irisan terbanyak
 		} elseif ($jumlahJawaban == 1) { //jika jawaban sama dengan 1
@@ -579,21 +582,22 @@ class GejalaController extends Controller
 						->orderByRaw('COUNT(*) DESC')
 						->pluck('hama')->toArray();
 					// dd($notHama);
-					
+
 					if (!$otherHama) {
 						return redirect()->route('selesai');
 					} elseif ($otherHama) {
 						$nullGejala = Basisaturan::select('id_gejala') //mencari gejala kecuali dari data hama jawaban pertama karna di jawab tidak
-						->where('kd_hama', $otherHama[0])
-						->whereNotIn('id_gejala', $dataJawaban)
-						->pluck('id_gejala')->toArray();
-					// dd($nullGejala);
+							->where('kd_hama', $otherHama[0])
+							->whereNotIn('id_gejala', $dataJawaban)
+							->pluck('id_gejala')->toArray();
+						// dd($nullGejala);
 
 						$tampilGejala = Basisaturan::select('id_gejala')->where('id_gejala', $nullGejala[0])->first(); //tampilkan gejala dengan irisan terbesar lainnya
 					}
 				}
 			}
 		}
+
 		return view('konsultasi.konsultasi_detail', compact('tampilGejala'));
 	}
 
