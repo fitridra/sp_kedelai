@@ -249,7 +249,7 @@ class GejalaController extends Controller
 							->where('id_gejala', $gejalaHama)
 							->first();
 						if ($tampilGejala == null) {
-							return redirect()->route('selesai');
+							return redirect()->route('selesai'); //selesai
 						}
 					} else {
 						$gejalaHama = Basisaturan::select('id_gejala') //lalu dari hama tersebut dilihat gejala nya apa saja dari hama terbanyak tadi
@@ -262,7 +262,7 @@ class GejalaController extends Controller
 							->first();
 						// dd($tampilGejala);
 						if ($tampilGejala == null) {
-							return redirect()->route('selesai');
+							return redirect()->route('selesai'); //selesai
 						}
 					}
 				} elseif ($indexHama->count('kd_hama') == 1) { //jika hasil hama pada index tersebut sama dengan satu
@@ -341,7 +341,7 @@ class GejalaController extends Controller
 							->pluck('hama')->toArray();
 						// dd($dataJawaban);
 						if ($hamaHasil == null) {
-							return redirect()->route('selesai');
+							return redirect()->route('selesai'); //selesai
 						} elseif ($hamaHasil != null) {
 							$gejalaHasil = Basisaturan::select('id_gejala') //lalu dari hama tersebut dilihat gejala nya apa saja dari hama terbanyak tadi
 								->where('kd_hama', $hamaHasil[0])
@@ -356,7 +356,7 @@ class GejalaController extends Controller
 									->whereNotIn('id_gejala', $dataJawaban)
 									->first();
 							} else {
-								return redirect()->route('selesai');
+								return redirect()->route('selesai'); //selesai
 							}
 						}
 					} else {
@@ -376,7 +376,7 @@ class GejalaController extends Controller
 									->whereNotIn('id_gejala', $dataJawaban)
 									->first();
 							} else {
-								return redirect()->route('selesai');
+								return redirect()->route('selesai'); //selesai
 							}
 						}
 					}
@@ -401,7 +401,7 @@ class GejalaController extends Controller
 							->orderByRaw('COUNT(*) DESC')
 							->first();
 						if ($tampilGejala == null) {
-							return redirect()->route('selesai');
+							return redirect()->route('selesai'); //selesai
 						}
 					}
 				}
@@ -584,7 +584,25 @@ class GejalaController extends Controller
 					// dd($notHama);
 
 					if (!$otherHama) {
-						return redirect()->route('selesai');
+						$JawabanBenar = Jawaban::where('id', auth()->user()->id)->where('pilihan', 1)->count('pilihan');
+						$Jawaban = Jawaban::where('id', auth()->user()->id)->where('pilihan', 1)->pluck('id_gejala');
+						// dd($Jawaban);
+						if ($JawabanBenar == 1) {
+							$Hama = Basisaturan::select('kd_hama')
+								->whereIn('id_gejala', $Jawaban)
+								->pluck('kd_hama')->toArray();
+
+							$gejalaHama = Basisaturan::select('id_gejala')
+								->whereIn('kd_hama', $Hama)
+								->whereNotIn('id_gejala', $dataJawaban)
+								->pluck('id_gejala');
+							
+							$tampilGejala = Basisaturan::select('id_gejala')
+								->whereIn('id_gejala', $gejalaHama)
+								->first();
+						} else {
+							return redirect()->route('selesai');
+						}
 					} elseif ($otherHama) {
 						$nullGejala = Basisaturan::select('id_gejala') //mencari gejala kecuali dari data hama jawaban pertama karna di jawab tidak
 							->where('kd_hama', $otherHama[0])
